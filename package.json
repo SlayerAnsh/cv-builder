@@ -2,10 +2,10 @@
   "name": "cv-builder",
   "version": "1.0.0",
   "private": true,
-  "description": "cvBuilder",
-  "author": "Anshudhar",
+  "description": "CV Builder for quick CV in multiple formats",
+  "author": "Anshudhar Kumar Singh",
   "keywords": [
-    "gatsby"
+    "gatsby,CV,SlayerAnsh,Anshudhar"
   ],
   "scripts": {
     "develop": "gatsby develop",
@@ -16,8 +16,13 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.12",
+    "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-styled-components": "^3.7.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-pdf": "^5.1.0",
+    "styled-components": "^5.2.1"
   }
 }
