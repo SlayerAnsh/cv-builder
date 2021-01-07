@@ -5,6 +5,8 @@ import {Link} from 'gatsby'
 
 
 const StyledSideBar = styled.div`
+    display:flex;
+    flex-direction:column;
     height:100vh;
     width:20%;
     position:fixed;
@@ -17,6 +19,15 @@ const StyledSideBar = styled.div`
     color:white;
     background-color:#de354c;
     box-shadow: 2px 0px 25px #de354c;
+    * {
+        margin-left:10px;
+    }
+    @media (max-width:900px){
+        flex-direction:row;
+        height: 45px;
+        width:100%;
+        overflow-x:scroll;
+    }
 `
 const StyledMain = styled.div`
     margin-left:20%;
@@ -27,12 +38,17 @@ const StyledMain = styled.div`
     padding:10px 30px;
     background-color: #f3f3f3;
     min-height:100vh;
+    @media (max-width:900px){
+        margin-left:0px;
+        margin-top: 45px;
+    }
 `
 function layout({children}) {
     
     return (
         <>
         <StyledSideBar>
+            <h1>TEMPLATES</h1>
             <Link to='/google' style={{color:'white',textDecoration:'none'}}>Google</Link>
         </StyledSideBar>
         <StyledMain>

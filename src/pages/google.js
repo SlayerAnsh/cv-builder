@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Maker from '../components/SlayerAnsh/pdfMaker'
 import Viewer from '../components/SlayerAnsh/pdfViewer'
 import {pdf} from '@react-pdf/renderer'
+import Format from '../components/SlayerAnsh/format'
 
 
 const StyledTitle = styled.h1`
@@ -20,9 +21,16 @@ const ViewContainer = styled.div`
   flex-grow: 0;
   align-self: center;
   box-shadow: 5px 5px 18px #525252;
+  transform:scale(0.8) ;
+  /* transform-origin:top; */
+  z-index:10;
+  /* transform:translateY(-50%); */
+  @media (max-width:900px){
+    transform:scale(0.4);
+  }
 `
 const PdfButton = styled.button`
-  margin: 50px 10px;
+  margin: 10px 10px;
   padding: 5px 10px;
   color: white;
   background-color: red;
@@ -36,12 +44,18 @@ const IndexPage = () => {
     github:'github.com/username',
     linkedin:'linkedin.com/in/username',
     gmail:'email@gmail.com',
-    summary:'I am username.'
+    summary:'I am username.',
+    skills:'skill1,,80;skill2,,70;skill3,,30;',
+    tech:'Software,,C++,C#,Java;Software,,C++,C#,Java;Software,,C++,C#,Java;',
+    interest: 'Chess;Badmintion',
+    works:'Company1,,11/12/2020-Present,,Handled A//Supervised B;Company2,,11/12/2020-Present,,Handled A//Supervised B',
+    education:'ABCD,,2019-2020,,CGPI: 8.59,,point A//point B;ABCD,,2019-2020,,CGPI: 8.59,,point A//point B;',
+    projects:'Project A,,www.google.com,,GitHub,,Aug 2020 - Current,,point A//point B;Project A,,www.google.com,,GitHub,,Aug 2020 - Current,,point A//point B;'
   });
   const createPdf = ()=>{
     pdf(<Viewer data={data} show={false}/>).toBlob().then((blob)=>{
       console.log(blob);
-      var a = document.createElement("a");
+      let a = document.createElement("a");
       document.body.appendChild(a);
       a.style.display = "none";
       let url = window.URL.createObjectURL(blob);
@@ -49,8 +63,18 @@ const IndexPage = () => {
       a.download = "cv.pdf";
       a.click();
       window.URL.revokeObjectURL(url);
+      a.click();
       a.remove();
     })
+  }
+
+  const createDataFile = ()=>{
+    let a = document.createElement("a");
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+    a.href = dataStr;
+    a.download = "data.json";
+    a.click();
+    a.remove();
   }
 
   return (
@@ -59,12 +83,14 @@ const IndexPage = () => {
         <title>Home Page</title>
       </main>
         <StyledTitle>SlayerAnsh CV Template</StyledTitle>
+        <Format />
         <Maker setData={setData} data={data}/>
         <ViewContainer>
           <Viewer data={data} show={true}/>
         </ViewContainer>
         
-        <PdfButton onHover onClick={createPdf}> Create Pdf</PdfButton>
+        <PdfButton onClick={createPdf}> Create Pdf</PdfButton>
+        <PdfButton onClick={createDataFile}> Create Data File</PdfButton>
     </Layout>
   )
 }
