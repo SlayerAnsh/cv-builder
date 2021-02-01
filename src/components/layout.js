@@ -50,6 +50,7 @@ function layout({children}) {
         <StyledSideBar>
             <h1>TEMPLATES</h1>
             <Link to='/google' style={{color:'white',textDecoration:'none'}}>Google</Link>
+            <Link to='/basic' style={{color:'white',textDecoration:'none'}}>Editable UI</Link>
         </StyledSideBar>
         <StyledMain>
             {children}

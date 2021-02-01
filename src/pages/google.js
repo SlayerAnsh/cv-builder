@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Maker from '../components/SlayerAnsh/pdfMaker'
 import Viewer from '../components/SlayerAnsh/pdfViewer'
 import {pdf} from '@react-pdf/renderer'
-import Format from '../components/SlayerAnsh/format'
 
 
 const StyledTitle = styled.h1`
@@ -83,7 +82,6 @@ const IndexPage = () => {
         <title>Home Page</title>
       </main>
         <StyledTitle>SlayerAnsh CV Template</StyledTitle>
-        <Format />
         <Maker setData={setData} data={data}/>
         <ViewContainer>
           <Viewer data={data} show={true}/>

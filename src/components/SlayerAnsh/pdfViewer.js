@@ -59,21 +59,21 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection:'column',
         alignItems:'stretch',
-        flex:'0 0 65%',
+        flex:'0 0 68%',
         flexGrow:'0',
         flexShrink:'0',
-        flexBasis:'65%',
-        padding:'5mm 10mm 5mm 10mm'
+        flexBasis:'68%',
+        padding:'5mm 5mm 5mm 10mm'
     },
     right:{
         display:'flex',
         flexDirection:'column',
         alignItems:'stretch',
-        flex:'0 0 35%',
+        flex:'0 0 32%',
         flexGrow:'0',
         flexShrink:'0',
-        flexBasis:'35%',
-        padding:'5mm 10mm 5mm 10mm'
+        flexBasis:'32%',
+        padding:'5mm 10mm 5mm 5mm'
     },
     contentBlock:{
         display:'flex',
@@ -118,6 +118,29 @@ const styles = StyleSheet.create({
         padding:'1mm',
         margin:'1mm'
     },
+    workHead:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        marginTop:'1mm'
+    },
+    workLeft:{
+        flex:'0 0 60%',
+        flexBasis:'60%',
+        flexGrow:'0',
+        flexShrink:'0',
+        display:'flex',
+        flexDirection:'column'
+    },
+    workRight:{
+        flex:'0 0 40%',
+        flexBasis:'40%',
+        flexGrow:'0',
+        flexShrink:'0',
+        display:'flex',
+        flexDirection:'column',
+        textAlign:'right'
+    },
     eduCont:{
         display:'flex',
         flexDirection:'row',
@@ -138,7 +161,31 @@ const styles = StyleSheet.create({
         flexGrow:'0',
         flexShrink:'0',
         display:'flex',
+        flexDirection:'column',
+        textAlign:'right'
+    },
+    projHead:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        marginTop:'1mm',
+    },
+    projLeft:{
+        flex:'0 0 60%',
+        flexBasis:'60%',
+        flexGrow:'0',
+        flexShrink:'0',
+        display:'flex',
         flexDirection:'column'
+    },
+    projRight:{
+        flex:'0 0 40%',
+        flexBasis:'40%',
+        flexGrow:'0',
+        flexShrink:'0',
+        display:'flex',
+        flexDirection:'column',
+        textAlign:'right'
     }
 })
 
@@ -182,11 +229,13 @@ function pdfViewer({data,show}) {
                                     return []
                                 }
                                 let points = val[2].split('//').map(point => (
-                                    <Text style={styles.contentText}>- {point}</Text>
+                                    <Text style={{...styles.contentText}}>- {point}</Text>
                                 ))
                                 return (<>
-                                    <Text style={{...styles.contentText,fontWeight:'bold',marginTop:'1mm'}}>{val[0]}</Text>
-                                    <Text style={{...styles.contentText,color:'#828282',fontSize:'4mm'}}>{val[1]}</Text>
+                                <View style={{...styles.workHead}}>
+                                    <Text style={{...styles.contentText,...styles.workLeft,fontWeight:'bold'}}>{val[0]}</Text>
+                                    <Text style={{...styles.contentText,...styles.workRight,color:'#828282',fontSize:'4mm'}}>{val[1]}</Text>
+                                </View>
                                     {points}
                                 </>)
                             })}
@@ -230,11 +279,13 @@ function pdfViewer({data,show}) {
                                 ))
                                 console.log(val)
                                 return (<>
-                                    <View style={{marginTop:'1mm',display:'flex',flexDirection:'row'}}>
-                                        <Text style={{...styles.contentText,fontWeight:'bold'}}>{val[0]}</Text>
-                                        <Text style={{...styles.contentText,color:'green', marginLeft:'1mm',textDecoration:'none'}}>[{show?val[2]:(<Link src={val[1]}>{val[2]}</Link>)}]</Text>
+                                    <View style={{...styles.projHead}}>
+                                        <View style={{...styles.projLeft,display:'flex',flexDirection:'row'}}>
+                                            <Text style={{...styles.contentText,fontWeight:'bold'}}>{val[0]}</Text>
+                                            <Text style={{...styles.contentText,color:'green', marginLeft:'1mm',textDecoration:'none'}}>[{show?val[2]:(<Link src={val[1]}>{val[2]}</Link>)}]</Text>
+                                        </View>
+                                        <Text style={{...styles.contentText,...styles.projRight,color:'#828282',fontSize:'4mm'}}>{val[3]}</Text>
                                     </View>
-                                    <Text style={{...styles.contentText,color:'#828282',fontSize:'4mm'}}>{val[3]}</Text>
                                     {points}
                                 </>)
                             })}
