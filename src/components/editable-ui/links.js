@@ -1,5 +1,5 @@
 import React,{useRef} from 'react'
-import {EditableLink} from '../editable'
+import {EditableLink} from './editable'
 import {StyleSheet,View} from '@react-pdf/renderer'
 
 const styles = StyleSheet.create({
@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         flexWrap:'wrap',
         justifyContent:'flex-start',
-        padding:'5pt 10mm 5pt 10mm',
+        padding:'5pt 20mm 5pt 20mm',
         marginTop:'4mm',
-        backgroundColor:'#f1f1f1'
+        backgroundColor:'#f4f4f4'
     },
     link:{
         flex:'1 0 40%',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flexBasis:'40%',
         textDecoration:'none',
         padding:'3pt 0pt',
-        color:'black'
+        color:'black',
     }
 })
 

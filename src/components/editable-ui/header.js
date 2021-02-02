@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     view:{
         alignSelf:'stretch',
         // backgroundColor:'#e3e3e3',
-        paddingTop:'5mm',
+        paddingTop:'8mm',
         display:'flex',
         flexDirection:'column',
         alignItems:'center',

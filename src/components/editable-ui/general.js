@@ -1,5 +1,5 @@
 import React,{useRef} from 'react'
-import {EditableText} from '../editable'
+import {EditableText} from './editable'
 import {StyleSheet,View} from '@react-pdf/renderer'
 
 const styles = StyleSheet.create({
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         fontSize: '5mm',
         color:'#46919a',
         fontWeight:'bold',
-        textTransform:'uppercase'
+        textTransform:'uppercase',
+        borderBottom:'1pt solid #46919a'
 
     },
     skill:{
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     },
     bar:{
         height:'3pt',
-        backgroundColor:'#777777',
+        backgroundColor:'#a2d2ff',
         borderRadius:'3pt',
         marginTop:'5pt',
         width:'100%',
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
         alignItems:'stretch',
     },
     val:{
-        backgroundColor:'red',
+        backgroundColor:'#ffafcc',
         borderRadius:'3pt',
     }
 })

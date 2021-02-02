@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'#e3e3e3',
         display:'flex',
         flexDirection:'column',
-        paddingRight:'10mm'
+        paddingRight:'15mm'
     },
     right:{
         flex:'1 0 35%',

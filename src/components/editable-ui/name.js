@@ -1,5 +1,5 @@
 import React,{useRef} from 'react'
-import {EditableText} from '../editable'
+import {EditableText} from './editable'
 import {StyleSheet} from '@react-pdf/renderer'
 
 const styles = StyleSheet.create({
@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         alignSelf:'flex-start',
         marginLeft:'10mm',
         fontSize:'8mm',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'#023047'
     }
 })
 

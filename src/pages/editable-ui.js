@@ -1,13 +1,28 @@
 import React, { useState, useRef } from 'react'
+import {Link as GLink} from 'gatsby'
 import styled from 'styled-components'
-import Pdf from '../components/basic/pdf'
-import {pdf} from '@react-pdf/renderer'
+import Pdf from '../components/editable-ui/pdf'
+import {Link, pdf} from '@react-pdf/renderer'
 
 const MainDiv = styled.div`
 display:flex;
 flex-direction:column;
 align-items:center;
-padding:10mm;
+padding:5mm 10mm;
+.head {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+}
+.links {
+  display:flex;
+  flex-direction:row;
+}
+.links a, .link{
+  text-decoration:none;
+  color:green;
+  margin: 0px 20px 10px 20px;
+}
 @media (max-width:250mm){
     align-items:flex-start;
     padding:0mm;
@@ -19,6 +34,25 @@ const PdfContainer = styled.div`
   border: 1px solid black;
   box-shadow: 5px 5px 18px #525252;
   font-size: 5mm;
+  & input, & textarea{
+    border-style:none;
+    border:1px solid black;
+    background-color:transparent;
+    padding:1px 2px;
+    margin:1px 1px;
+  }
+  & button{
+    text-decoration:none;
+    border-style:none;
+    border:1px solid black;
+    margin:1px 1px;
+    padding:1px 2px;
+    color:#ffffff;
+    background-color:green;
+  }
+  & button:last-child{
+    background-color:red;
+  }
 `
 const Button = styled.button`
   margin:30px 10px;
@@ -63,6 +97,16 @@ function Basic() {
 
     return (
         <MainDiv>
+          <main>
+            <title>CV | Editable UI</title>
+          </main>
+            <div className="head">
+              <h1>EDITABLE UI RESUME BUILDER</h1>
+              <span className="links">
+              <GLink className="link" to='/'>Home</GLink>
+              <a href="https://github.com/SlayerAnsh">SlayerAnsh</a>
+              </span>
+            </div>
             <PdfContainer>
                 <Pdf web={true} data={data} setData={setData}/>
             </PdfContainer>

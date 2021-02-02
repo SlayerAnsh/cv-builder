@@ -1,11 +1,11 @@
 import React,{useRef} from 'react'
-import {EditableText,EditableLink} from '../editable'
+import {EditableText} from './editable'
 import {StyleSheet,View} from '@react-pdf/renderer'
 
 const styles = StyleSheet.create({
-    project:{
+    work:{
         alignSelf:'stretch',
-        marginTop:'6mm',
+        marginTop:'3mm',
         display:'flex',
         flexDirection:'column'
     },
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
         fontSize: '5mm',
         color:'#46919a',
         fontWeight:'bold',
-        textTransform:'uppercase'
-
+        textTransform:'uppercase',
+        borderBottom:'1pt solid #46919a'
     },
     headView:{
         alignSelf:'stretch',
@@ -28,13 +28,6 @@ const styles = StyleSheet.create({
         fontSize: '14pt',
         fontWeight:'bold',
     },
-    link:{
-        textDecoration:'none',
-        fontSize:'12pt',
-        color:'green',
-        alignSelf:'center',
-        marginLeft:'4pt'
-    },
     duration:{
         fontSize:'10pt',
         color:'#656867'
@@ -46,14 +39,14 @@ const styles = StyleSheet.create({
 
 })
 
-function Project({data,setData,web}) {
+function Work({data,setData}) {
     const inputRef = useRef(null);
 
     return (
-        <View style={styles.project}>
+        <View style={styles.work}>
             <EditableText
-                text={data.project}
-                placeholder="Projects"
+                text={data.work}
+                placeholder="WORK EXPERIENCE"
                 type="input"
                 childRef={inputRef}
                 style={styles.title}
@@ -61,21 +54,20 @@ function Project({data,setData,web}) {
                 <input
                     ref={inputRef}
                     type="text"
-                    name="project"
-                    placeholder="Projects"
-                    value={data.project}
-                    onChange={e => setData({...data,project:e.target.value})}
+                    name="WORK"
+                    placeholder="WORK EXPERIENCE"
+                    value={data.work}
+                    onChange={e => setData({...data,work:e.target.value})}
                     style={{fontSize:'0.8em'}}
                 />
             </EditableText>
-            {data.projects?data.projects.map((project,index)=>{
+            {data.works?data.works.map((work,index)=>{
                 return (
                     <>
                     <View style={styles.headView}>
-                    <View style={{display:'flex',flexDirection:'row'}}>
                     <EditableText
-                        text={project.head}
-                        placeholder={"Project Title" + (index + 1)}
+                        text={work.head}
+                        placeholder={"Work Title" + (index + 1)}
                         type="input"
                         childRef={inputRef}
                         style={styles.head}
@@ -83,61 +75,27 @@ function Project({data,setData,web}) {
                         <input
                             ref={inputRef}
                             type="text"
-                            name="project head"
-                            placeholder={"Project Title" + (index + 1)}
-                            value={project.head}
+                            name="work head"
+                            placeholder={"Work Title" + (index + 1)}
+                            value={work.head}
                             onChange={({target}) => setData(prev=>{
-                                prev.projects[index].head = target.value
+                                prev.works[index].head = target.value
                                 return {...prev}
                             })}
                             style={{fontSize:'0.8em'}}
                         />
                         <button onClick={()=>setData(prev=>{
-                            prev.projects.splice(index+1,0,{head:'',link:{text:'',src:''},duration:'',points:['']});
+                            prev.works.splice(index+1,0,{head:'',duration:'',points:['']});
                             return {...prev}
                         })}>Add</button>
                         <button onClick={()=>setData(prev=>{
-                            if(prev.projects.length>1)
-                            prev.projects.splice(index,1);
+                            if(prev.works.length>1)
+                            prev.works.splice(index,1);
                             return {...prev}
                         })}>remove</button>
                     </EditableText>
-                    <EditableLink
-                        text={"[" + project.link.text + "]"}
-                        src = {project.link.src}
-                        placeholder='Link'
-                        type="input"
-                        childRef={inputRef}
-                        web={web}
-                        style={styles.link}
-                        >
-                        <input
-                            ref={inputRef}
-                            type="text"
-                            name="project link"
-                            placeholder="Link Text"
-                            value={project.link.text}
-                            onChange={({target}) => setData(prev=>{
-                                prev.projects[index].link.text = target.value||'';
-                                return {...prev}
-                            })}
-                            style={{fontSize:'0.8em'}}
-                        />
-                        <input
-                            type="text"
-                            name={"link" + index}
-                            placeholder="Link Src"
-                            value={project.link.src}
-                            onChange={({target}) => setData(prev=>{
-                                prev.projects[index].link.src = target.value||'';
-                                return {...prev}
-                            })}
-                            style={{fontSize:'0.8em'}}
-                        />
-                    </EditableLink>
-                    </View>
                     <EditableText
-                        text={project.duration}
+                        text={work.duration}
                         placeholder="duration"
                         type="input"
                         childRef={inputRef}
@@ -146,18 +104,18 @@ function Project({data,setData,web}) {
                         <input
                             ref={inputRef}
                             type="text"
-                            name="project duration"
+                            name="work duration"
                             placeholder='duration'
-                            value={project.duration}
+                            value={work.duration}
                             onChange={({target}) => setData(prev=>{
-                                prev.projects[index].duration = target.value
+                                prev.works[index].duration = target.value
                                 return {...prev}
                             })}
                             style={{fontSize:'0.8em'}}
                         />
                     </EditableText>
                 </View>
-                {project.points.map((point,indexp)=>{
+                {work.points.map((point,indexp)=>{
                     return (
                         <EditableText
                             text={"- " + point}
@@ -169,22 +127,22 @@ function Project({data,setData,web}) {
                             <input
                                 ref={inputRef}
                                 type="text"
-                                name="project point"
+                                name="work point"
                                 placeholder={'point ' + (indexp + 1)}
                                 value={point}
                                 onChange={({target}) => setData(prev=>{
-                                    prev.projects[index].points[indexp] = target.value
+                                    prev.works[index].points[indexp] = target.value
                                     return {...prev}
                                 })}
                                 style={{fontSize:'0.8em'}}
                             />
                             <button onClick={()=>setData(prev=>{
-                                prev.projects[index].points.splice(indexp+1,0,'');
+                                prev.works[index].points.splice(indexp+1,0,'');
                                 return {...prev}
                             })}>Add</button>
                             <button onClick={()=>setData(prev=>{
-                                if(prev.projects[index].points.length>1)
-                                prev.projects[index].points.splice(indexp,1);
+                                if(prev.works[index].points.length>1)
+                                prev.works[index].points.splice(indexp,1);
                                 return {...prev}
                             })}>remove</button>
                         </EditableText>
@@ -192,9 +150,9 @@ function Project({data,setData,web}) {
                 })}
                 </>
                 )
-            }):setData({...data,projects:[{head:'',link:{text:'',src:''},duration:'',points:['']}]})}
+            }):setData({...data,works:[{head:'',duration:'',points:['']}]})}
         </View>
     )
 }
 
-export default Project
+export default Work

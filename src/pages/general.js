@@ -1,4 +1,5 @@
 import React,{useState} from "react"
+import {Link} from 'gatsby'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import Maker from '../components/SlayerAnsh/pdfMaker'
@@ -6,11 +7,25 @@ import Viewer from '../components/SlayerAnsh/pdfViewer'
 import {pdf} from '@react-pdf/renderer'
 
 
-const StyledTitle = styled.h1`
-  font-size:36px;
-  font-weight:700;
-  text-align:center;
-  margin-bottom:10px;
+const StyledTitle = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:5mm 10mm;
+.head {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+}
+.links {
+  display:flex;
+  flex-direction:row;
+}
+.links a, .link{
+  text-decoration:none;
+  color:green;
+  margin: 0px 20px 10px 20px;
+}
 `
 const ViewContainer = styled.div`
   height: 297mm;
@@ -20,6 +35,9 @@ const ViewContainer = styled.div`
   flex-grow: 0;
   align-self: center;
   box-shadow: 5px 5px 18px #525252;
+  display:flex;
+  flex-direction:column;
+  text-align:left;
   transform:scale(0.8) ;
   /* transform-origin:top; */
   z-index:10;
@@ -79,9 +97,15 @@ const IndexPage = () => {
   return (
     <Layout>
       <main>
-        <title>Home Page</title>
+        <title>CV | General</title>
       </main>
-        <StyledTitle>SlayerAnsh CV Template</StyledTitle>
+        <StyledTitle>
+        <h1>BASIC RESUME BUILDER</h1>
+              <span className="links">
+              <Link className="link" to='/'>Home</Link>
+              <a href="https://github.com/SlayerAnsh">SlayerAnsh</a>
+        </span>
+        </StyledTitle>
         <Maker setData={setData} data={data}/>
         <ViewContainer>
           <Viewer data={data} show={true}/>
