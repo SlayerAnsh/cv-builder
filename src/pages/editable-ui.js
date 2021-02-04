@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import {Link as GLink} from 'gatsby'
 import styled from 'styled-components'
 import Pdf from '../components/editable-ui/pdf'
-import {Link, pdf} from '@react-pdf/renderer'
+import {pdf} from '@react-pdf/renderer'
 
 const MainDiv = styled.div`
 display:flex;
@@ -40,6 +40,7 @@ const PdfContainer = styled.div`
     background-color:transparent;
     padding:1px 2px;
     margin:1px 1px;
+    width:100%;
   }
   & button{
     text-decoration:none;
@@ -79,7 +80,7 @@ function Basic() {
           a.style.display = "none";
           let url = window.URL.createObjectURL(blob);
           a.href = url;
-          a.download = "cv.pdf";
+          a.download = (data.name||'resume') + ".pdf";
           a.click();
           window.URL.revokeObjectURL(url);
           a.click();
@@ -90,7 +91,7 @@ function Basic() {
         let a = document.createElement("a");
         let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
         a.href = dataStr;
-        a.download = "data.json";
+        a.download = (data.name||'resume') + ".json";
         a.click();
         a.remove();
       }

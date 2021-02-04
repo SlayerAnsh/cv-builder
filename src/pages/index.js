@@ -20,6 +20,11 @@ const StyledList = styled.div`
         margin: 40px 20px;
         display:flex;
         flex-direction:column;
+        transition:all 0.5s ease;
+    }
+    .cont:hover{
+        z-index:99;
+        transform:scale(1.1);
     }
     .img{
         overflow:hidden;
@@ -82,6 +87,7 @@ function index() {
         <Layout>
             <main>
                 <title>CV Builder</title>
+                <meta charset="UTF-8"></meta>
             </main>
             <StyledHeading>
                 CV BUILDER
@@ -92,7 +98,7 @@ function index() {
                     return (
                         <div className="cont" style={{boxShadow:`0px 0px 15px 2px ${colors[Math.floor(Math.random()*colors.length)]}`}}>
                             <div className="img">
-                                <img src={item.image} alt={item.name}/>
+                                <img src={"/templates" + item.link + '.jpg'} alt={"../images/templates" + item.link + '.jpg'}/>
                             </div>
                             <h3>{item.name}</h3>
                             <a href={'https://github.com/'+ item.creatorLink}>{item.creator}</a>

@@ -1,6 +1,7 @@
 import React,{useRef} from 'react'
 import {EditableLink} from './editable'
-import {StyleSheet,View} from '@react-pdf/renderer'
+import {StyleSheet,View,Image} from '@react-pdf/renderer'
+import LinkImg from '../../images/link.png'
 
 const styles = StyleSheet.create({
     links:{
@@ -22,7 +23,15 @@ const styles = StyleSheet.create({
         flexBasis:'40%',
         textDecoration:'none',
         padding:'3pt 0pt',
-        color:'black',
+        color:'green',
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    img:{
+        height:'3mm',
+        width:'3mm',
+        marginRight:'2mm'
     }
 })
 
@@ -32,6 +41,8 @@ function Links({data,setData,web}) {
         <View style={styles.links}>
         {data.links?data.links.map((link,index)=>{
             return (
+                <View style={styles.link}>
+                {web?(<img src={LinkImg} style={styles.img} alt='link'/>):(<Image src={LinkImg} style={styles.img}></Image>)}    
                 <EditableLink
                     text={link.text}
                     src = {link.src}
@@ -39,7 +50,6 @@ function Links({data,setData,web}) {
                     type="input"
                     childRef={inputRef}
                     web={web}
-                    style={styles.link}
                     >
                     <input
                         ref={inputRef}
@@ -74,6 +84,7 @@ function Links({data,setData,web}) {
                         return {...prev}
                     })}>remove</button>
                 </EditableLink>
+                </View>
             )
         }):setData({...data,links:[{text:'',src:''}]})}
         </View>
