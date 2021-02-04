@@ -38,6 +38,28 @@ const styles = StyleSheet.create({
     }
 })
 
+const bar_color = [
+    {
+        bar:'#66c2a3',
+        val:'#03734d'
+    },
+    {
+        bar:'#93bfeb',
+        val:'#1866b4'
+    },
+    {
+        bar:'#f5aa85',
+        val:'#cc4300'
+    },
+    {
+        bar:'#f490ae',
+        val:'#d70947'
+    },
+    {
+        bar:'#be9de2',
+        val:'#772acb'
+    },
+]
 function General({data,setData}) {
     const inputRef = useRef(null);
 
@@ -103,8 +125,8 @@ function General({data,setData}) {
                             return {...prev}
                         })}>remove</button>
                     </EditableText>
-                    <View style={styles.bar}>
-                        <View style={{...styles.val,width:`${isNaN(parseInt(general.val))?'80%':parseInt(general.val)>100?'100%':parseInt(general.val) + '%'}`}}>
+                    <View style={{...styles.bar,backgroundColor:bar_color[index%bar_color.length].bar}}>
+                        <View style={{...styles.val,width:`${isNaN(parseInt(general.val))?'80%':parseInt(general.val)>100?'100%':parseInt(general.val) + '%'}`,backgroundColor:bar_color[index%bar_color.length].val}}>
                         </View>
                     </View>
                 </>

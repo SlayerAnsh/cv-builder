@@ -58,20 +58,20 @@ const StyledList = styled.div`
 
 const items = [
     {
-        name:'General',
-        creator:'Slayer Ansh',
-        creatorLink:'/SlayerAnsh',
-        image:'#',
-        link:'/general',
-        about:'Simple Design with input blocks for data'
-    },
-    {
         name:'Editable UI',
         creator:'Slayer Ansh',
         creatorLink:'/SlayerAnsh',
         image:'#',
         link:'/editable-ui',
         about:'More advance builder with inline Editable UI'
+    },
+    {
+        name:'General',
+        creator:'Slayer Ansh',
+        creatorLink:'/SlayerAnsh',
+        image:'#',
+        link:'/general',
+        about:'Simple Design with input blocks for data'
     },
 ]
 

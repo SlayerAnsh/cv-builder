@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     }
 })
 
+const int_color = ['#921473','#1866b4','#cc4300','#d70947','#772acb']
+
 function Interest({data,setData}) {
     const inputRef = useRef(null);
 
@@ -64,7 +66,7 @@ function Interest({data,setData}) {
                         placeholder={"Interest" + (index + 1)}
                         type="input"
                         childRef={inputRef}
-                        style={styles.text}
+                        style={{...styles.text,backgroundColor:int_color[index%int_color.length]}}
                         >
                         <input
                             ref={inputRef}
@@ -76,7 +78,7 @@ function Interest({data,setData}) {
                                 prev.interests[index] = target.value
                                 return {...prev}
                             })}
-                            style={{fontSize:'0.8em'}}
+                            style={{fontSize:'0.8em',color:'white',borderColor:'white'}}
                         />
                         <button onClick={()=>setData(prev=>{
                             prev.interests.splice(index+1,0,'');
