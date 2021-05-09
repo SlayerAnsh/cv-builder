@@ -1,7 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "CV Builder",
+    title: "cv-builder",
   },
-  pathPrefix: '/cv-builder',
-  plugins: [`gatsby-plugin-styled-components`],
+  plugins: ["gatsby-plugin-styled-components"],
 };
