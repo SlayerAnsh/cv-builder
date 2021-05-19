@@ -1,11 +1,13 @@
 import React from 'react'
-import {} from '@react-pdf/renderer'
-import { Link } from 'gatsby'
+import { Typography } from '@material-ui/core'
+import { Button } from 'gatsby-theme-material-ui'
 
-export default function index() {
+export default function Index() {
   return (
     <div>
-      <Link to="/create">Create Your Own CV Design</Link>
+      <Typography>
+        <Button variant="outlined" to="/create">Create Page</Button>
+      </Typography>
     </div>
   )
 }

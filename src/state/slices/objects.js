@@ -16,23 +16,7 @@ const initialState = {
         ...OBJECT_PROTOTYPE.VIEW,
         [PROPERTIES.POS]: 1,
         [PROPERTIES.PARENT]: '2'
-    },
-    4: {
-        ...OBJECT_PROTOTYPE.TEXT,
-        [PROPERTIES.POS]: 1,
-        [PROPERTIES.PARENT]: '3'
-    },
-    5: {
-        ...OBJECT_PROTOTYPE.DOCUMENT,
-        [PROPERTIES.POS]: 1,
-        [PROPERTIES.PARENT]: null
-    },
-    6: {
-        ...OBJECT_PROTOTYPE.PAGE,
-        [PROPERTIES.POS]: 1,
-        [PROPERTIES.PARENT]: '5'
-    },
-
+    }
 }
 
 const objectsSlice = createSlice({

@@ -1,32 +1,13 @@
 import React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from '../styles/theme'
 
 export default function Layout({ children }) {
     return (
-        <Container>
-            <GlobalStyle />
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
             {children}
-        </Container>
+        </ThemeProvider>
     )
 }
-
-const GlobalStyle = createGlobalStyle`
-    * {
-        box-sizing:border-box;
-        padding:0px;
-        margin:0px;
-        border:none;
-        text-decoration:none;
-        line-height:1.6;
-    }
-`
-
-const Container = styled.div`
-    background-color: white;
-    min-height:100vh;
-    min-width:100vw;
-    display:flex;
-    flex-direction:column;
-    padding:30px 10px 10px 10px;
-`

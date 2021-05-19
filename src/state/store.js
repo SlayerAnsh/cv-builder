@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import copyReducer from './slices/copy'
-import objectsReducer from './slices/objects'
-import selectedReducer from './slices/selected'
+import layerSelect from './slices/layerSelect'
+import objects from './slices/objects'
 
 export default configureStore({
     reducer: {
-        objects: objectsReducer,
-        selected: selectedReducer,
-        copy: copyReducer
+        objects: objects,
+        layerSelect: layerSelect,
     }
 })
